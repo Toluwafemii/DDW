@@ -11,6 +11,10 @@ class ComposerStaticInit1fb6c7ace75cf35786763c6761c069c8
         array (
             'PHPMailer\\PHPMailer\\' => 20,
         ),
+        'D' => 
+        array (
+            'DDWeekend\\' => 10,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
@@ -18,6 +22,16 @@ class ComposerStaticInit1fb6c7ace75cf35786763c6761c069c8
         array (
             0 => __DIR__ . '/..' . '/phpmailer/phpmailer/src',
         ),
+        'DDWeekend\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/app',
+        ),
+    );
+
+    public static $classMap = array (
+        'DDWeekend\\Mail\\Mail' => __DIR__ . '/../..' . '/app/Mail/class.Mail.php',
+        'DDWeekend\\Models\\User' => __DIR__ . '/../..' . '/app/Models/class.User.php',
+        'DDWeekend\\Utilities\\EmailTemplater' => __DIR__ . '/../..' . '/app/Utilities/class.EmailTemplater.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
@@ -25,6 +39,7 @@ class ComposerStaticInit1fb6c7ace75cf35786763c6761c069c8
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInit1fb6c7ace75cf35786763c6761c069c8::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInit1fb6c7ace75cf35786763c6761c069c8::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit1fb6c7ace75cf35786763c6761c069c8::$classMap;
 
         }, null, ClassLoader::class);
     }

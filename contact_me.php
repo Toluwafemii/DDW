@@ -1,23 +1,36 @@
 <?php
+
+use DDWeekend\Utilities\EmailTemplater;
+use DDWeekend\Models\User;
+use DDWeekend\Mail\Mail;
+
 // autoload classes
 require 'vendor/autoload.php';
 
 // Check for empty fields
 if(
        empty($_POST['first-name'])
-    || empty($_POST['email']) 
+    || empty($_POST['email'])
     || empty($_POST['last-name'])
-    || empty($_POST['phone']) 
+    || empty($_POST['phone'])
     || !filter_var($_POST['email'],FILTER_VALIDATE_EMAIL)
 )
 {
- echo json_encode(array('error'=>'true'));
- return false;
+ header("Location: _index.php?error=All the form fields are required. Please fill properly and try again.");
+ exit;
 }
 
+$firstname = $_POST['first-name'];
+$lastname = $_POST['last-name'];
+$email = $_POST['email'];
+$phone = $_POST['phone'];
+
 // Create User instance from submitted data
-$user = new DDWeekend\Model\User($firstname, $lastname, $email, $phone);
-$mail = new DDWeekend\Mail\Mail($user, $template);
+$user = new User($firstname, $lastname, $email, $phone);
+
+$template = file_get_contents('emails/registered.php');
+$parsed_template = EmailTemplater::parse($template, $user->firstname, $user->lastname, $user->email, $user->phone);
+$mail = new Mail($user, $parsed_template);
 $mail->buildData();
 
 if ($mail->send()) {

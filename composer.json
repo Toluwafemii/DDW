@@ -3,10 +3,11 @@
         "phpmailer/phpmailer": "^6.0"
     },
     "autoload": {
-        "classmap": {
+        "classmap": [
             "app/Mail",
-            "app/Models"
-        },
+            "app/Models",
+            "app/Utilities"
+        ],
         "psr-4": {
             "DDWeekend\\": "app/"
         }
