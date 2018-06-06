@@ -21,14 +21,15 @@ class Mail
     {
         try {
             $this->phpmailer->send();
-            return True;
         } catch (\Exception $e) {
             return False;
         }
+        return True;
     }
 
      public function buildData()
     {
+        // var_dump($this->config());die();
         $mail = new PHPMailer();
         $mail->Charset = 'utf-8';
         ini_set('default_charset', 'UTF-8');
@@ -39,8 +40,8 @@ class Mail
         $mail->Port = 587;
         $mail->SMTPSecure = 'tls';
         $mail->SMTPAuth = true;
-        $mail->Username = $this->config()[0];
-        $mail->Password = $this->config()[1];
+        $mail->Username = $this->config()['username'];
+        $mail->Password = $this->config()['password'];
         $mail->setFrom('info@deepdiveweekend.com', 'DeepDive.');
         $mail->addReplyTo('fabrobocomx@gmail.com', 'Timolinn');
         $mail->addAddress('xaviertim017@gmail.com', 'Tim Tesla');
