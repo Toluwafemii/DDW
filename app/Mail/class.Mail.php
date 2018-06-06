@@ -41,7 +41,7 @@ class Mail
         $mail->SMTPAuth = true;
         $mail->Username = $this->config()[0];
         $mail->Password = $this->config()[1];
-        $mail->setFrom('info@deepdiveweekend.com');
+        $mail->setFrom('info@deepdiveweekend.com', 'DeepDive.');
         $mail->addReplyTo('fabrobocomx@gmail.com', 'Timolinn');
         $mail->addAddress('xaviertim017@gmail.com', 'Tim Tesla');
         $mail->addBCC('femi@golumino.com');

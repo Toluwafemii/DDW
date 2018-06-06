@@ -10,7 +10,7 @@
     <h3>DeepDive Weekends</h3>
     Hello Femi,
 
-    Below is the Submitted orm Data from DeepDive Weekend
+    <h6>Below is the Submitted form Data from DeepDive Weekend</h6>
 
     <ul>
         <li>First Name: %firstname%</li>
