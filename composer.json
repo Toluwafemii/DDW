@@ -1,0 +1,14 @@
+{
+    "require": {
+        "phpmailer/phpmailer": "^6.0"
+    },
+    "autoload": {
+        "classmap": {
+            "app/Mail",
+            "app/Models"
+        },
+        "psr-4": {
+            "DDWeekend\\": "app/"
+        }
+    }
+}
