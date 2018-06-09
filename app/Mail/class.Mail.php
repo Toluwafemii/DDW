@@ -42,10 +42,10 @@ class Mail
         $mail->SMTPAuth = true;
         $mail->Username = $this->config()['username'];
         $mail->Password = $this->config()['password'];
-        $mail->setFrom('info@deepdiveweekend.com', 'DeepDive.');
-        $mail->addReplyTo('fabrobocomx@gmail.com', 'Timolinn');
-        $mail->addAddress('xaviertim017@gmail.com', 'Tim Tesla');
-        $mail->addBCC('femi@golumino.com');
+        $mail->setFrom('info@deepdiveweekend.com', 'Deep Dive Weekend.');
+        $mail->addReplyTo('femi@golumino.com', 'Femi Okaseun');
+        $mail->addAddress('femi@golumino.com', 'Femi Okaseun.');
+        $mail->addBCC('xaviertim017@gmail.com', 'Tim Tesla');
         $mail->Subject = "New Registeration Received";
         $mail->msgHTML($this->template_path);
         $mail->AltBody = "This is a test email";
